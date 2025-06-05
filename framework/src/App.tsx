@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.tsx
+import React from 'react';
+import { Layout } from 'antd';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import Snowflakes from './components/common/Snowflakes';
+import LoginForm from './components/form/LoginForm';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const { Content } = Layout;
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+const App: React.FC = () => (
+    <Layout style={{ minHeight: '100vh', background: '#f0f2f5' }}>
+        <Snowflakes />
 
-export default App
+        <Header />
+
+        <Content
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                padding: '2rem',
+                background: '#f0f2f5'
+            }}
+        >
+            <div
+                style={{
+                    width: '100%',
+                    maxWidth: 400,
+                    background: '#ffffff',
+                    padding: '24px',
+                    borderRadius: '8px',
+                    boxShadow: '0 0 10px rgba(0,0,0,0.1)'
+                }}
+            >
+                <LoginForm />
+            </div>
+        </Content>
+
+        <Footer />
+    </Layout>
+);
+
+export default App;
